@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Data.SqlClient;
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
@@ -14,6 +15,7 @@ namespace HttpTriggerCore
     {
         public static IActionResult Run(HttpRequest req, TraceWriter log)
         {
+            var client = new SqlCommand();
             log.Info("C# HTTP trigger function processed a request.");
 
             if (req.Query.TryGetValue("name", out StringValues value)) {
